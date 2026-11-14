@@ -91,7 +91,7 @@ async function main(): Promise<void> {
         logger.info("Shutdown requested; closing HTTP server and stopping Raft node");
         server.close();
         try {
-            await raft.stop();
+            await raft.disconnect();
             logger.info("Raft node stopped successfully");
         } catch (error) {
             logger.error("Failed while stopping Raft node", error);
